@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SEOConfiguration from './config-meta'
+import { useEffect } from 'react';
 
 export default function Router() {
   return [
@@ -9,6 +10,10 @@ export default function Router() {
 }
 
 export function Home() {
+  const location = useLocation();
+
+  useEffect(() => { }, [location])
+
   return (
     <div>
       <SEOConfiguration title="Home Page" description="Home Description" image="/vite.svg" />
@@ -19,6 +24,9 @@ export function Home() {
 }
 
 export function About() {
+  const location = useLocation();
+
+  useEffect(() => { }, [location])
   return (
     <div>
       <SEOConfiguration title="About Page" description="About Description" image="/vite.svg" />
