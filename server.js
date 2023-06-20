@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import express from 'express'
+import path from 'path';
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
@@ -52,6 +53,8 @@ app.use('*', async (req, res) => {
     }
 
     const rendered = await render(url, ssrManifest)
+
+    // Get Helmet Configuration
     const helmet = rendered.helmet
     const helmetTags = helmet && helmet.title.toString() + helmet.meta.toString();
 

@@ -6,14 +6,15 @@ import { StaticRouter } from "react-router-dom/server";
 
 export function render(url) {
   const helmetContext = {};
+  const context = {};
 
   const html = ReactDOMServer.renderToString(
     <React.StrictMode>
-      <HelmetProvider context={helmetContext}>
-        <StaticRouter location={url}>
+      <StaticRouter location={'/' + url} context={context}>
+        <HelmetProvider context={helmetContext}>
           <App />
-        </StaticRouter>
-      </HelmetProvider>
+        </HelmetProvider>
+      </StaticRouter>
     </React.StrictMode>
   )
 
