@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
 import SEOConfiguration from '../config-meta'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { countingValue } from '../store/countingValue'
+import { getDataMeta } from '../components/data/MetaConfiguration'
 
 export default function Home() {
   const isLocation = useLocation();
@@ -9,17 +10,38 @@ export default function Home() {
   const increment = countingValue((state) => state.increment);
   const decrement = countingValue((state) => state.decrement);
   const incrementByAmount = countingValue((state) => state.incrementByAmount)
+  const [isMeta, setIsMeta] = useState(null)
 
-  useEffect(() => { }, [isLocation])
+  useEffect(() => {
+    const defineMeta = async () => {
+      await getDataMeta({
+        path: '/home'
+      }).then(({ result, status }) => {
+        if (!status) return;
+
+        setIsMeta(result)
+      })
+    }
+
+    defineMeta()
+  }, [isLocation])
 
   return (
     <div>
-      <SEOConfiguration path="/home" />
+      {isMeta &&
+        <SEOConfiguration
+          title={isMeta.title}
+          description={isMeta.description}
+          url={isMeta.url}
+          image={isMeta.image}
+        />
+      }
       <div className="flex flex-col justify-center items-center">
         <img src="/avataaars.png" className="h-40 w-40" />
         <h1 className="text-7xl">Home</h1>
-        <div className="mt-4">
+        <div className="mt-4 space-x-5">
           <Link to="/about" className="">About</Link>
+          <Link to="/products" className="">Products</Link>
         </div>
         <div className="mt-4 space-x-5">
           <button onClick={increment} className="bg-sky-500 text-white">Tambah</button>

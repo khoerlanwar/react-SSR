@@ -55,15 +55,11 @@ app.use('*', async (req, res) => {
 
     // Get Helmet Configuration
     const helmet = rendered.helmet
-    const helmetTags = helmet && helmet.title.toString() + helmet.meta.toString();
+    const helmetTags = helmet.title.toString() + helmet.meta.toString();
 
     const html = template
       .replace(`<!--app-head-->`, helmetTags ?? '')
       .replace(`<!--app-html-->`, rendered.html ?? '')
-    // .replace(`<!--app-reducer-->`, ` <script>
-    //     // Mengirim state awal Redux ke klien
-    //     window.__PRELOADED_STATE__ = ${JSON.stringify(rendered.finalState).replace(/</g, '\\u003c')}
-    //   </script>`)
 
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {

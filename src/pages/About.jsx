@@ -4,11 +4,32 @@ import SEOConfiguration from '../config-meta'
 
 export default function About() {
   const isLocation = useLocation();
+  const [isMeta, setIsMeta] = useState(null)
 
-  useEffect(() => { }, [isLocation])
+  useEffect(() => {
+    const defineMeta = async () => {
+      await getDataMeta({
+        path: '/home'
+      }).then(({ result, status }) => {
+        if (!status) return;
+
+        setIsMeta(result)
+      })
+    }
+
+    defineMeta()
+  }, [isLocation])
+
   return (
     <div>
-      <SEOConfiguration path="/about" />
+      {isMeta &&
+        <SEOConfiguration
+          title={isMeta.title}
+          description={isMeta.description}
+          url={isMeta.url}
+          image={isMeta.image}
+        />
+      }
       <div className="flex flex-col justify-center items-center">
         <img src="/avataaars2.png" className="h-40 w-40" />
         <h1 className="text-7xl">About</h1>
