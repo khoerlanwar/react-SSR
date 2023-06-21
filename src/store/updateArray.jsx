@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { getItem, setItem } from '../helper/localStorage';
 
 const initial = {
-  array: 0
+  array: []
 }
 
 export const arrayStore = create((set) => ({

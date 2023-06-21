@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server'
 import App from './App'
 import { HelmetProvider } from 'react-helmet-async';
 import { StaticRouter } from "react-router-dom/server";
+import './index.css';
 
 export function render(url) {
   const helmetContext = {};
