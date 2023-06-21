@@ -3,8 +3,6 @@ import ReactDOMServer from 'react-dom/server'
 import App from './App'
 import { HelmetProvider } from 'react-helmet-async';
 import { StaticRouter } from "react-router-dom/server";
-import { store } from './store'
-import { Provider } from 'react-redux'
 
 export function render(url) {
   const helmetContext = {};
@@ -12,13 +10,11 @@ export function render(url) {
 
   const html = ReactDOMServer.renderToString(
     <React.StrictMode>
-      <Provider store={store}>
-        <StaticRouter location={'/' + url} context={context}>
-          <HelmetProvider context={helmetContext}>
-            <App />
-          </HelmetProvider>
-        </StaticRouter>
-      </Provider>
+      <StaticRouter location={'/' + url} context={context}>
+        <HelmetProvider context={helmetContext}>
+          <App />
+        </HelmetProvider>
+      </StaticRouter>
     </React.StrictMode>
   )
 

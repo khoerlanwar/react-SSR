@@ -8,7 +8,7 @@ export default function SEOConfiguration({ title, description, image, url }) {
       <meta name="description" content={description} data-react-helmet="true" />
       <meta property="og:title" content={title} data-react-helmet="true" />
       <meta property="og:description" content={description} data-react-helmet="true" />
-      <meta property="og:image" content={image} data-react-helmet="true" />
+      <meta property="og:image" content={`https://beta-nmwclinic.co.id/${image}`} data-react-helmet="true" />
       <meta property="og:url" content={'https://beta-nmwclinic.co.id'} data-react-helmet="true" />
     </Helmet>
   )

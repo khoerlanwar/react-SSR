@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import countingValue from './store/countingValue'
+// import { configureStore } from '@reduxjs/toolkit'
+// import countingValue from './store/countingValue
 
-export const store = configureStore({
-  reducer: {
-    counting: countingValue
-  },
-})
+// export default function Store() {
+//   return configureStore({
+//     reducer: {
+//       counting: countingValue
+//     }
+//   })
+// }

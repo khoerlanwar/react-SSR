@@ -60,6 +60,10 @@ app.use('*', async (req, res) => {
     const html = template
       .replace(`<!--app-head-->`, helmetTags ?? '')
       .replace(`<!--app-html-->`, rendered.html ?? '')
+    // .replace(`<!--app-reducer-->`, ` <script>
+    //     // Mengirim state awal Redux ke klien
+    //     window.__PRELOADED_STATE__ = ${JSON.stringify(rendered.finalState).replace(/</g, '\\u003c')}
+    //   </script>`)
 
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
