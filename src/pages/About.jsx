@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SEOConfiguration from '../config-meta'
+import { getDataMeta } from '../components/data/MetaConfiguration';
 
 export default function About() {
   const isLocation = useLocation();
@@ -9,7 +10,7 @@ export default function About() {
   useEffect(() => {
     const defineMeta = async () => {
       await getDataMeta({
-        path: '/home'
+        path: '/about'
       }).then(({ result, status }) => {
         if (!status) return;
 
@@ -22,14 +23,12 @@ export default function About() {
 
   return (
     <div>
-      {isMeta &&
-        <SEOConfiguration
-          title={isMeta.title}
-          description={isMeta.description}
-          url={isMeta.url}
-          image={isMeta.image}
-        />
-      }
+      <SEOConfiguration
+        title={isMeta?.title}
+        description={isMeta?.description}
+        url={isMeta?.url}
+        image={isMeta?.image}
+      />
       <div className="flex flex-col justify-center items-center">
         <img src="/avataaars2.png" className="h-40 w-40" />
         <h1 className="text-7xl">About</h1>

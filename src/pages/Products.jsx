@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import SEOConfiguration from '../config-meta'
 import { arrayStore } from '../store/updateArray'
+import { getDataMeta } from '../components/data/MetaConfiguration';
 
 export default function Products() {
   const isLocation = useLocation();
@@ -29,14 +30,12 @@ export default function Products() {
 
   return (
     <div>
-      {isMeta &&
-        <SEOConfiguration
-          title={isMeta.title}
-          description={isMeta.description}
-          url={isMeta.url}
-          image={isMeta.image}
-        />
-      }
+      <SEOConfiguration
+        title={isMeta?.title}
+        description={isMeta?.description}
+        url={isMeta?.url}
+        image={isMeta?.image}
+      />
       <div className="flex flex-col justify-center items-center">
         <img src="/avataaars2.png" className="h-40 w-40" />
         <h1 className="text-7xl">Products</h1>
