@@ -9,9 +9,9 @@ export default function SEOConfiguration({ title, description, url, image }) {
   const isCallBackURL = url ?? 'https://nmwclinic.co.id'
   const isImage = image ?? 'https://dummyimage.com/300.png/09f/fff'
 
-  console.log(isTitle)
-
   useEffect(() => { }, [location])
+
+  console.log(isTitle)
 
   return (
     <Helmet>
@@ -24,6 +24,7 @@ export default function SEOConfiguration({ title, description, url, image }) {
       <meta property="og:description" content={isDescription} />
       <meta property="og:image" content={isImage} />
       <meta property="og:url" content={isCallBackURL} />
+      <meta property="og:type" content="website" />
     </Helmet>
   )
 }
