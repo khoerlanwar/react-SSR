@@ -13,8 +13,6 @@ export async function render(url) {
 
   const { status, result } = await getDataMeta({ path: currentURL });
 
-  console.log(result)
-
   const html = ReactDOMServer.renderToString(
     <React.StrictMode>
       <StaticRouter location={currentURL} context={context}>
