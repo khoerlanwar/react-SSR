@@ -55,10 +55,10 @@ app.use('*', async (req, res) => {
 
     // Get Helmet Configuration
     const helmet = rendered.helmet
-    const helmetTags = helmet.title.toString() + helmet.meta.toString();
+    const helmetTags = helmet?.title.toString() + helmet?.meta.toString();
 
     const html = template
-      .replace(`<!--app-head-->`, helmetTags ?? rendered.head)
+      .replace(`<!--app-head-->`, helmetTags ?? '')
       .replace(`<!--app-html-->`, rendered.html ?? '')
 
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
