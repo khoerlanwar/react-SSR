@@ -11,8 +11,6 @@ export default function SEOConfiguration({ title, description, url, image }) {
 
   useEffect(() => { }, [location])
 
-  console.log(isTitle)
-
   return (
     <Helmet>
       <title>{isTitle}</title>

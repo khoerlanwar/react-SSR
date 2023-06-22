@@ -58,7 +58,7 @@ app.use('*', async (req, res) => {
     const helmetTags = helmet.title.toString() + helmet.meta.toString();
 
     const html = template
-      .replace(`<!--app-head-->`, helmetTags ?? '')
+      .replace(`<!--app-head-->`, helmetTags ?? rendered.head)
       .replace(`<!--app-html-->`, rendered.html ?? '')
 
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)

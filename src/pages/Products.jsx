@@ -9,8 +9,6 @@ export default function Products() {
   const { array } = arrayStore((state) => state.initial);
   const isUpdated = arrayStore((state) => state.updateArray);
   const [isMeta, setIsMeta] = useState(null)
-  const [isLoading, setIsLoading] = useState(true);
-
   const handleUpdateArray = () => {
     isUpdated(['berhasil', 'tambah', 'new array'])
   }
@@ -22,7 +20,6 @@ export default function Products() {
       }).then(({ result, status }) => {
         if (!status) return;
 
-        setIsLoading(false)
         setIsMeta(result)
       })
     }
@@ -30,7 +27,7 @@ export default function Products() {
     defineMeta()
   }, [isLocation])
 
-  return !isLoading && (
+  return (
     <div>
       <SEOConfiguration
         title={isMeta?.title}
