@@ -23,6 +23,8 @@ export async function render(url) {
     </React.StrictMode>
   )
 
+  const { helmet } = helmetContext;
+
   const head = status ? `
       <title>${result.title}</title>
       <meta name="description" content="${result.description}" />
